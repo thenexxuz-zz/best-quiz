@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>The Best Quiz</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -68,7 +68,7 @@
                         <g
                             id="layer1">
                             <g
-                                aria-label="TheBest Quiz"
+                                aria-label="The Best Quiz"
                                 transform="scale(1.267209,0.78913581)"
                                 id="text12"
                                 style="font-style:normal;font-weight:normal;font-size:13.4113px;line-height:1.25;font-family:sans-serif;fill:#ff0000;fill-opacity:1;stroke:#ff0000;stroke-width:0.335282">
