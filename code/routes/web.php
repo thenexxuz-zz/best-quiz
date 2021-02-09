@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuizController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('/quiz')->group(function () {
+    Route::post('/results', [QuizController::class, 'quizResults'])->name('quizResults');
+    Route::prefix('/{category}')->group(function() {
+        Route::get('/', [QuizController::class, 'difficultySelect'])->name('quiz');
+        Route::post('/', [QuizController::class, 'currentQuiz'])->name('currentQuiz');
+    });
+});
+
+
