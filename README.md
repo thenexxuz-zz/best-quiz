@@ -12,9 +12,9 @@ yarn
 yarn dev
 ```
 
+### Seeding DB with more questions
 Get an API key from https://quizapi.io/ and add it to `.env` as `QUIZ_API_TOKEN`
 
-### Seeding DB with more questions
 Every time you run this all four quizzes get 30 more questions per difficulty added to the DB.
 ```
 php artisan db:seed --class=QuestionSeeder
