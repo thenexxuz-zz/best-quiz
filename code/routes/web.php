@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::prefix('/quiz')->group(function () {
     Route::post('/results', [QuizController::class, 'quizResults'])->name('quizResults');

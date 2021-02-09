@@ -13,21 +13,40 @@ class Quiz
     /**
      * Quiz constructor.
      */
-    public function __construct($username, $category, $difficulty, $numberOfQuestions)
+    public function __construct($username, $category, $difficulty, $numberOfQuestions, $questionIds='')
     {
         $this->setUsername($username);
         $this->setCategory($category);
         $this->setDifficulty($difficulty);
         $this->setNumberOfQuestions($numberOfQuestions);
 
-        $questions = Question::where([
-            'category' => $this->getCategory(),
-            'difficulty' => $this->getDifficulty(),
-        ])
-            ->inRandomOrder()
-            ->limit($this->getNumberOfQuestions())
-            ->get()->toArray();
+        $questions = [];
+        if (empty($questionIds)) {
+            $questions = Question::where([
+                'category' => $this->getCategory(),
+                'difficulty' => $this->getDifficulty(),
+            ])
+                ->inRandomOrder()
+                ->limit($this->getNumberOfQuestions())
+                ->get()->toArray();
+        } else {
+            $questions = [];
+            foreach ($questionIds as $questionId) {
+                $questions[] = json_decode(Question::find($questionId)->toJson(), true);
+            }
+        }
         $this->setQuestions($questions);
+    }
+
+    public function getResults($answered)
+    {
+        $numberCorrect = 0;
+        foreach($this->getQuestions() as $question) {
+            if (json_decode($question['correct_answers'], true)[$answered[$question['id']] .'_correct'] === 'true') {
+                $numberCorrect++;
+            }
+        }
+        return $numberCorrect;
     }
 
     /**

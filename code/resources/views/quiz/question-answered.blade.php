@@ -10,7 +10,19 @@
                         @foreach(json_decode($question['answers'], true) as $key => $answer)
                             @if(!is_null($answer))
                                 <div>
-                                    <input type="checkbox" id="{{ $question['id'] }}-{{ $key }}" name="{{ $question['id'] }}-{{ $key }}" value="{{ $key }}">
+                                    <input
+                                        disabled
+                                        type="checkbox"
+                                        id="{{ $question['id'] }}-{{ $key }}"
+                                        name="{{ $question['id'] }}-{{ $key }}"
+                                        value="{{ $key }}"
+                                        @if (json_decode($question['correct_answers'], true)[$key .'_correct'] === 'true')
+                                            class="text-green-700" checked
+                                        @endif
+                                        @if ($answered[$question['id']] === $key)
+                                            class="text-red-700" checked
+                                        @endif
+                                    >
                                     <label for="{{ $question['id'] }}-{{ $key }}">{{ $answer }}</label>
                                 </div>
                             @endif

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,29 @@ class QuizController extends Controller
 
     public function quizResults(Request $request)
     {
+        $input = $request->all();
+        $questionIds = [];
+        $answered = [];
+        foreach ($input as $key => $value) {
+            if (strpos($key, 'answer') !== false) {
+                $id = substr($key, 0, strpos($key, '-'));
+                $questionIds[] = $id;
+                $answered[$id] = $value;
+            }
+        }
+        $questionIds = array_unique($questionIds);
+        $numberOfQuestions = count($questionIds);
+        $quiz = new Quiz(
+            $input['username'],
+            $input['category'],
+            $input['difficulty'],
+            $numberOfQuestions,
+            $questionIds
+        );
 
         return view('quiz.results', [
-            'username' => $request->input('username'),
+            'quiz' => $quiz,
+            'answered' => $answered
         ]);
     }
 }
