@@ -8,7 +8,6 @@ docker build -t nginx-base nginx/
 cd code
 cp .env.example .env
 composer install
-yarn
 yarn dev
 ```
 
@@ -23,5 +22,5 @@ php artisan db:seed --class=QuestionSeeder
 ### Running the application
 Run this from the project root
 ```
-docker-compose -f ./docker-compose.yml up
+docker-compose up
 ```
