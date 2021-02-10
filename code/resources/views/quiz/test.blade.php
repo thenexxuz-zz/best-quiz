@@ -14,6 +14,7 @@
         <input type="hidden" name="username" value="{{ json_encode($quiz->getUsername()) }}">
         <input type="hidden" name="category" value="{{ json_encode($quiz->getCategory()) }}">
         <input type="hidden" name="difficulty" value="{{ json_encode($quiz->getDifficulty()) }}">
+        <input type="hidden" name="numberOfQuestions" value="{{ count($quiz->getQuestions()) }}">
         @each('quiz.question', $quiz->getQuestions(), 'question', 'quiz.error')
         @if (count($quiz->getQuestions()))
             <button type="submit" class="rounded-md border-gray-500 hover:border-gray-500 dark:text-white">Submit Test</button>

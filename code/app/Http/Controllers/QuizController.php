@@ -46,7 +46,7 @@ class QuizController extends Controller
             }
         }
         $questionIds = array_unique($questionIds);
-        $numberOfQuestions = count($questionIds);
+        $numberOfQuestions = $input['numberOfQuestions'];
         $quiz = new Quiz(
             $input['username'],
             $input['category'],

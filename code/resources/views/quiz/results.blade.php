@@ -15,6 +15,7 @@
                 <div class="ml-2">
                     <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
                         <div class="mb-5">
+                            <strong>{{ $quiz->getUsername() }}, you completed the {{ $quiz->getCategory() }} quiz!</strong><br/>
                             <strong>{{ $quiz->getResults($answered) }} out of {{ $quiz->getNumberOfQuestions() }} correct</strong>
                         </div>
                         <div>

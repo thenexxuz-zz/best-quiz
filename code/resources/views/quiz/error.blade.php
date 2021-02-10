@@ -9,6 +9,9 @@
                     <div>
                         It appears there are no questions for the test you selected.
                     </div>
+                    <div>
+                        <a href="{{ route('welcome') }}">Try another quiz!</a>
+                    </div>
                 </div>
             </div>
         </div>
